@@ -1,0 +1,28 @@
+{
+  "name": "masak-apa",
+  "version": "1.0.0",
+  "description": "Pair Project Reza Ervan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezapramudhika/masak-apa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rezapramudhika/masak-apa/issues"
+  },
+  "homepage": "https://github.com/rezapramudhika/masak-apa#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "nodemon": "^1.17.1",
+    "pg": "^7.4.1",
+    "sequelize": "^4.35.0",
+    "sequelize-cli": "^4.0.0"
+  }
+}
