@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER
   }, {});
   UserIngredient.associate = function(models) {
-    // associations can be defined here
+    UserIngredient.belongsTo(models.User);
+    UserIngredient.belongsTo(models.Ingredient);
   };
   return UserIngredient;
 };
