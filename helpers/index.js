@@ -15,9 +15,8 @@ function redirectIfLoggedIn(req, res, next) {
 }
 
 function instructionsAdjuster(text) {
-    text = text.split('\n')
-    console.log(text)
-    return text
+    text = text.split('\n');
+    return text;
 }
 
 module.exports = {

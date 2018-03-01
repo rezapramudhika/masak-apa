@@ -2,9 +2,10 @@ const express = require('express');
 const routes = express.Router();
 const models = require('../models');
 const Sequelize = require('sequelize');
+const helper = require('../helpers');
 const Op = Sequelize.Op;
 
-routes.get('/', (req,res)=>{
+routes.get('/', helper.isLogin, (req,res)=>{
     let keyword = req.query.keyword;
     let userId = req.session.userIdLogin;
     models.Ingredient.findAll({

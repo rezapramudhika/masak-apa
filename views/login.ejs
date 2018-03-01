@@ -1,9 +1,9 @@
-<div><h4>LOGIN</h4></div>
 <%-include('./partials/header.ejs')%>
 
-<div>
+<div class="container-fluid">
+    <div><h4>LOGIN</h4></div>
     <form method="post">
-        <table>
+        <table >
             <tr>
                 <th>Email</th>
                 <th>:</th>
@@ -21,3 +21,5 @@
     </form>
     <table><tr><th style="color:red"><%=err%></th></tr></table>
 </div>
+
+<%-include('./partials/footer.ejs')%>

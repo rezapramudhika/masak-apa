@@ -21,13 +21,16 @@ user.get('/edit', helper.isLogin, (req, res) => {
 user.post('/edit', (req, res) => {
     let id = req.session.userIdLogin;
     let updatedData = {
-        name: req.body.name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email
     }
-    console.log(updatedData, id)
     model.User.update(updatedData, {where:{id:id}})
     .then(() => {
         res.redirect('/user')
+    })
+    .catch((err) => {
+        console.log(err)
     })
 });
 

@@ -1,12 +1,15 @@
-<div>
-    <%if(!isLogin) {%>
-    <a href="/login"><button>login</button></a>
-    <a href="/register"><button>Register</button></a>
-    <%}%>
-    <%if(isLogin) {%>
-    <a href="/Ingredient"><button>Ingredient</button></a>
-    <a href="/Recipe"><button>Recipe</button></a>
-    <a href="/User"><button>User</button></a>
-    <a href="/logout"><button>Logout</button></a>
-    <%}%>
-</div>
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <body>
+    <div>
+        <%if(!isLogin) {%>
+        <a href="/login"><button>login</button></a>
+        <a href="/register"><button>Register</button></a>
+        <%}%>
+        <%if(isLogin) {%>
+        <a href="/Ingredient"><button>Ingredient</button></a>
+        <a href="/Recipe"><button>Recipe</button></a>
+        <a href="/User"><button>User</button></a>
+        <a href="/logout"><button>Logout</button></a>
+        <%}%>
+    </div>

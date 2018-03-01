@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
         // },
         isEmail: true,
         isUnique(value, next) {
-          console.log(value)
           User.findAll({where: {email: value}})
           .then(data => {
             if(data.length > 0) {
