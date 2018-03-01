@@ -22,9 +22,9 @@
                     <h5><% helper.instructionsAdjuster(recipe[i].Recipe.instruction).forEach(instruction => {%>
                         <li><%=instruction%></li>
                     <%})%></h5>
-                    <a href="/"><button>Cook</button></a>
+                    <button onclick="location.href ='/recipe/<%=recipe[i].RecipeId%>/cook'">Cook</button>
                 </ul> 
                 <% count.push(recipe[i].RecipeId) %>
             <% } %>
         <% } %>
-<%-include('./partials/header.ejs')%>
+<%-include('./partials/footer.ejs')%>

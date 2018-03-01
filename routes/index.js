@@ -60,8 +60,7 @@ routes.post('/register', (req, res) => {
 });
 
 routes.get('/logout', helper.isLogin, (req, res) => {
-    req.session.userIdLogin = null;
-    req.session.isLogin = false;
+    req.session.destroy()
     res.redirect('/user');
 })
 
