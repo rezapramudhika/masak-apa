@@ -11,12 +11,12 @@ routes.use('/recipe', recipe);
 routes.use('/ingredient', ingredient);
 
 routes.get('/', helper.isLogin, (req,res)=>{
-    res.send('Hello World');
+    res.redirect('/user')
 })
 
 routes.get('/login', helper.redirectIfLoggedIn, (req, res) => {
     let err = req.query.err;
-    res.render('login', {err:err})
+    res.render('login', {err:err, isLogin:req.session.isLogin})
 });
 
 routes.post('/login', (req, res) => {
@@ -38,7 +38,7 @@ routes.get('/register', helper.redirectIfLoggedIn, (req, res) => {
     let err = req.query.err || '';
     let name = req.query.name || '';
     let email = req.query.email || '';    
-    res.render('register', {err:err, name:name, email:email})
+    res.render('register', {err:err, name:name, email:email, isLogin:req.session.isLogin})
 });
 
 routes.post('/register', (req, res) => {

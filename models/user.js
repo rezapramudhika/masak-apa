@@ -4,10 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type:DataTypes.STRING,
       validate: {
-        notNull: {
-          args: true,
-          msg: "Name cannot be empty"
-        },
+        // notNull: {
+        //   args: true,
+        //   msg: "Name cannot be empty"
+        // },
         isAlphanumeric: {
           args: true,
           msg: "You cannot use special character for Name"
@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type:DataTypes.STRING,
       validate: {
-        notNull: {
-          args:true,
-          msg: "email cannot be empty"
-        },
+        // notNull: {
+        //   args:true,
+        //   msg: "email cannot be empty"
+        // },
         isEmail: true,
         isUnique(value, next) {
           console.log(value)
@@ -38,10 +38,10 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type:DataTypes.STRING,
       validate: {
-        notNull: {
-          args: true,
-          msg: "password cannot be empty"
-        },
+        // notNull: {
+        //   args: true,
+        //   msg: "password cannot be empty"
+        // },
         len: {
           args: [5,255],
           msg: "Password length must be at least 5 character"

@@ -8,14 +8,14 @@ const user = express.Router();
 user.get('/', helper.isLogin, (req, res) => {
     let id = req.session.userIdLogin;
     model.User.findById(id)
-    .then(user => res.render('user', {user:user}))
-    .catch((err) => console.log(err))//res.redirect('/login'))
+    .then(user => res.render('user', {user:user, isLogin:req.session.isLogin}))
+    .catch((err) => console.log(err))
 });
 
 user.get('/edit', helper.isLogin, (req, res) => {
     let id = req.session.userIdLogin;
     model.User.findById(id)
-    .then(user => res.render('userEdit', {user:user}));
+    .then(user => res.render('userEdit', {user:user, isLogin:req.session.isLogin}));
 });
 
 user.post('/edit', (req, res) => {

@@ -15,7 +15,7 @@ routes.get('/', (req,res)=>{
                     [Op.iLike]: '%'+req.query.keyword+'%'}
             }
         }).then(ingredients => {
-            res.render('ingredient.ejs', {ingredients: ingredients})
+            res.render('ingredient.ejs', {ingredients: ingredients, isLogin:req.session.isLogin})
         })
     }
 });

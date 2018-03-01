@@ -5,7 +5,7 @@ const model = require('../models');
 const register = express.Router();
 
 register.get('/', (req, res) => {
-    res.render('register')
+    res.render('register', {isLogin:req.session.isLogin})
 });
 
 register.post('/', (req, res) => {
