@@ -1,11 +1,12 @@
 const express = require('express');
-const routes = express.Router();
-
 const model = require('../models');
-const helper = require('../helpers');
+var bcrypt = require('bcrypt');
 
+const helper = require('../helpers');
 const recipe = require('./recipe');
 const ingredient = require('./ingredient');
+
+const routes = express.Router();
 
 routes.use('/recipe', recipe);
 routes.use('/ingredient', ingredient);
@@ -20,12 +21,18 @@ routes.get('/login', helper.redirectIfLoggedIn, (req, res) => {
 });
 
 routes.post('/login', (req, res) => {
-    model.User.findAll({where:{email:req.body.email, password:req.body.password}})
+    let email = req.body.email
+    model.User.findAll({where:{email:email}})
     .then(user => {
         if(user.length === 1) {
-            req.session.isLogin = true;
-            req.session.userIdLogin = user[0].id
-            res.redirect('/user')
+            let password = req.body.password
+            if(bcrypt.compareSync(password, user[0].password)) {
+                req.session.isLogin = true;
+                req.session.userIdLogin = user[0].id
+                res.redirect('/user')
+            } else{
+                reject();
+            }
         }
         else {reject()  }
     })
@@ -45,12 +52,18 @@ routes.get('/register', helper.redirectIfLoggedIn, (req, res) => {
 });
 
 routes.post('/register', (req, res) => {
-    console.log(req.body)
-    let newAcc = {
+
+    const saltRounds = 10;
+    const myPlaintextPassword = req.body.password;
+
+    var salt = bcrypt.genSaltSync(saltRounds);
+    var hash = bcrypt.hashSync(myPlaintextPassword, salt);
+
+    const newAcc = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: hash
     };
     model.User.create(newAcc)
     .then(() => res.redirect('/'))

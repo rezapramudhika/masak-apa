@@ -1,9 +1,8 @@
 "use strict"
 const express = require('express');
 const model =require('../models');
-const helper = require('../helpers')
+const helper = require('../helpers');
 const user = express.Router();
-
 
 user.get('/', helper.isLogin, (req, res) => {
     let id = req.session.userIdLogin;

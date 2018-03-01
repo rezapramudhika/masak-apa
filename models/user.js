@@ -48,17 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     password: {
-      type:DataTypes.STRING,
-      validate: {
-        // notNull: {
-        //   args: true,
-        //   msg: "password cannot be empty"
-        // },
-        len: {
-          args: [5,255],
-          msg: "Password length must be at least 5 character"
-        }
-      }
+      type:DataTypes.STRING
     }
   }, {
     hooks: {
