@@ -18,6 +18,10 @@
                 <% for(let j = 0; j<recipe[i].Ingredients.length; j++){ %>
                     <li> <%= recipe[i].Ingredients[j].name %> </li>
                 <% } %>
+                <h4>Instructions</h4>
+                <h5><% helper.instructionsAdjuster(recipe[i].instruction).forEach(instruction => {%>
+                    <li><%=instruction%></li>
+                <%})%></h5>
             </ul> 
         <% } %>
             

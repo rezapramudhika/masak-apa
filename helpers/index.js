@@ -14,7 +14,14 @@ function redirectIfLoggedIn(req, res, next) {
     }
 }
 
+function instructionsAdjuster(text) {
+    text = text.split('\n')
+    console.log(text)
+    return text
+}
+
 module.exports = {
     isLogin:isLogin,
-    redirectIfLoggedIn:redirectIfLoggedIn
+    redirectIfLoggedIn:redirectIfLoggedIn,
+    instructionsAdjuster:instructionsAdjuster
 }
