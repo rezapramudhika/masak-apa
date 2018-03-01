@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING
   }, {});
   Recipe.associate = function(models) {
-    // associations can be defined here
+    Recipe.belongsToMany(models.Ingredient, {through: models.RecipeIngredient});
+    Recipe.hasMany(models.RecipeIngredient);
   };
   return Recipe;
 };

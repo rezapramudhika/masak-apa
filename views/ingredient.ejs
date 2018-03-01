@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="GET" action="/ingredient">
+            <input type="text" name="keyword" placeholder="Search ingredient here..">
+            <input type="submit" value="search">
+        </form>
+
+        <% if(ingredients !== ''){ %>
+            <table>
+                <% for(let i = 0; i<ingredients.length; i++){ %>
+                    <tr>
+                        <td><%= ingredients[i].name %></td>
+                        <td>
+                            <form method="POST" action="/ingredient/1/add/<%= ingredients[i].id%>" style="margin: 0">
+                                <input type="submit" value="Add to my ingredient">
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        <% } %>
+    </body>
+</html>

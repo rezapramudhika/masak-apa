@@ -1,0 +1,23 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <form>
+            
+        </form>
+
+        <% for(let i = 0; i<recipe.length; i++){ %>
+            <ul style="background: lightblue"> 
+                <p style="font-weight: 600; margin: 0"><%= recipe[i].name %></p>
+                Ingredient:
+                <br>
+                <% for(let j = 0; j<recipe[i].Ingredients.length; j++){ %>
+                    <li> <%= recipe[i].Ingredients[j].name %> </li>
+                <% } %>
+            </ul> 
+        <% } %>
+            
+    </body>
+</html>
