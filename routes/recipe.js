@@ -7,7 +7,11 @@ routes.get('/', (req,res)=>{
         include: [{model: models.Ingredient}]
     })
         .then(recipes => {
+            // res.send(recipes);
             res.render('recipe.ejs', {recipe: recipes, isLogin:req.session.isLogin});
+        })
+        .catch(err => {
+            console.log(err);
         })
 });
 
