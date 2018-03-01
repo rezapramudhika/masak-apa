@@ -1,15 +1,14 @@
 const express = require('express');
 const routes = express.Router();
-<<<<<<< HEAD
+
 const model = require('../models');
 const helper = require('../helpers');
-=======
+
 const recipe = require('./recipe');
 const ingredient = require('./ingredient');
 
 routes.use('/recipe', recipe);
 routes.use('/ingredient', ingredient);
->>>>>>> user-add-ingredient
 
 routes.get('/', helper.isLogin, (req,res)=>{
     res.send('Hello World');
