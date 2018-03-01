@@ -6,7 +6,7 @@ function isLogin(req, res, next) {
     }
 }
 
-function redirectFromLogin(req, res, next) {
+function redirectIfLoggedIn(req, res, next) {
     if(req.session.isLogin && req.session.userIdLogin) {
         res.redirect('/user')
     } else {
@@ -16,5 +16,5 @@ function redirectFromLogin(req, res, next) {
 
 module.exports = {
     isLogin:isLogin,
-    redirectFromLogin:redirectFromLogin
+    redirectIfLoggedIn:redirectIfLoggedIn
 }

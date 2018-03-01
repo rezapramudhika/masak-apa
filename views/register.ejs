@@ -8,12 +8,12 @@
             <tr>
                 <th>Name</th>
                 <th>:</th>
-                <th><input type="text" name="name"></th>
+                <th><input type="text" name="name" value="<%=name%>"></th>
             </tr>
             <tr>
                 <th>Email</th>
                 <th>:</th>
-                <th><input type="text" name="email"></th>
+                <th><input type="text" name="email" value="<%=email%>"></th>
             </tr>
             <tr>
                 <th>Password</th>
@@ -25,4 +25,8 @@
             </tr>
         </table>
     </form>
+</div>
+
+<div>
+    <table><tr><th style="color:red"><%=err%></th></tr></table>
 </div>
