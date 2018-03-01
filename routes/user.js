@@ -44,10 +44,4 @@ user.get('/delete', helper.isLogin, (req, res) => {
     })
 })
 
-user.get('/logout', helper.isLogin, (req, res) => {
-    req.session.userIdLogin = null;
-    req.session.isLogin = false;
-    res.redirect('/user');
-})
-
 module.exports = user;
