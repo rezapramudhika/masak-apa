@@ -5,6 +5,7 @@
 
     </head>
     <body>
+        <br><br>
         <form method="GET" action="/ingredient">
             <input type="text" name="keyword" placeholder="Search ingredient here..">
             <input type="submit" value="search">
@@ -16,7 +17,7 @@
                     <tr>
                         <td><%= ingredients[i].name %></td>
                         <td>
-                            <form method="POST" action="/ingredient/1/add/<%= ingredients[i].id%>" style="margin: 0">
+                            <form method="POST" action="/ingredient/<%= userId %>/add/<%= ingredients[i].id%>" style="margin: 0">
                                 <input type="submit" value="Add to my ingredient">
                             </form>
                         </td>
@@ -24,5 +25,22 @@
                 <% } %>
             </table>
         <% } %>
+
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                   <td>My Ingredient</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i<userIngredients.length; i++){ %>
+                    <tr>
+                        <td><%= userIngredients[i].Ingredient.name %></td>
+                        <td><button>Delete</button></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
     </body>
 </html>

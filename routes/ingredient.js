@@ -6,18 +6,23 @@ const Op = Sequelize.Op;
 
 routes.get('/', (req,res)=>{
     let keyword = req.query.keyword;
-    if(keyword = ''){
-        res.render('ingredient.ejs', {ingredients: ''})
-    }else{
-        models.Ingredient.findAll({
-            where: {
-                name: {
-                    [Op.iLike]: '%'+req.query.keyword+'%'}
-            }
-        }).then(ingredients => {
-            res.render('ingredient.ejs', {ingredients: ingredients, isLogin:req.session.isLogin})
+    let userId = req.session.userIdLogin;
+    models.Ingredient.findAll({
+        where: {
+            name: {
+                [Op.iLike]: '%'+req.query.keyword+'%'}
+        }
+    }).then(ingredients => {
+        models.UserIngredient.findAll({
+            where: {UserId: req.session.userIdLogin},
+            include: [{model: models.Ingredient}]
+        }).then(userIngredients => {
+            // res.send({ingredients: ingredients, userId: req.session.userIdLogin, userIngredients: userIngredients})
+            res.render('ingredient.ejs', {ingredients: ingredients, isLogin:req.session.isLogin, userId: req.session.userIdLogin, userIngredients: userIngredients})
         })
-    }
+        // 
+    })
+    
 });
 
 routes.post('/:idUser/add/:idIngredient', (req,res)=>{

@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Ingredient.associate = function(models) {
     Ingredient.belongsToMany(models.Recipe, {through: models.RecipeIngredient});
+    Ingredient.belongsToMany(models.User, {through: models.UserIngredient});
     Ingredient.hasMany(models.RecipeIngredient);
+    Ingredient.hasMany(models.UserIngredient);
   };
   return Ingredient;
 };
