@@ -1,10 +1,11 @@
 <div>
     <%if(!isLogin) {%>
     <a href="/login"><button>login</button></a>
+    <a href="/register"><button>Register</button></a>
     <%}%>
+    <%if(isLogin) {%>
     <a href="/Ingredient"><button>Ingredient</button></a>
     <a href="/Recipe"><button>Recipe</button></a>
-    <%if(isLogin) {%>
     <a href="/User"><button>User</button></a>
     <a href="/logout"><button>Logout</button></a>
     <%}%>
