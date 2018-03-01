@@ -17,8 +17,8 @@
     </table>
     <table>
         <tr>
-            <th><button onclick="location.href ='/user/<%=user.id%>/edit'">Edit Account</button></th>
-            <th><button onclick="location.href ='/'">Delete Account</button></th>
+            <th><button onclick="location.href ='/user/edit'">Edit Account</button></th>
+            <th><a href="/user/delete"><button onclick="return confirm(`Are you sure to delete this account, Delete cannot be undone!`)">Delete</button></a></th>
         </tr>
     </table>
 </div>

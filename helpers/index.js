@@ -1,15 +1,20 @@
 function isLogin(req, res, next) {
-    // console.log(req.session)
-    console.log("Masuk middleware")
     if(req.session.isLogin && req.session.userIdLogin) {
         next();
-    }
-    else {
+    } else {
         res.redirect('/login')
     }
-    
+}
+
+function redirectFromLogin(req, res, next) {
+    if(req.session.isLogin && req.session.userIdLogin) {
+        res.redirect('/user')
+    } else {
+        next();
+    }
 }
 
 module.exports = {
     isLogin:isLogin,
+    redirectFromLogin:redirectFromLogin
 }

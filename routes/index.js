@@ -1,12 +1,13 @@
 const express = require('express');
 const routes = express.Router();
-const model = require('../models')
+const model = require('../models');
+const helper = require('../helpers');
 
-routes.get('/', (req,res)=>{
+routes.get('/', helper.isLogin, (req,res)=>{
     res.send('Hello World');
 })
 
-routes.get('/login', (req, res) => {
+routes.get('/login', helper.redirectFromLogin, (req, res) => {
     let err = req.query.err;
     res.render('login', {err:err})
 });
