@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
           console.log(value)
           User.findAll({where: {email: value}})
           .then(data => {
-            // console.log(data)
             if(data.length > 0) {
               next("This email already registered")
             } else {
@@ -49,9 +48,21 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, {
+    hooks: {
+      beforeDestroy: (instance, options) => {
+        let userId = instance.id;
+        console.log('=============>',instance)
+        console.log('----------------<', options)
+        sequelize.models.UserIngredient.destroy({where: {UserId:userId}})
+        .then(() => {})
+        .catch(err => {console.log(err)})
+      }
+    }
+  });
   User.associate = function(models) {
-    // associations can be defined here
+    // User.belongsTo(models.UserIngredient),
+    // User.belongsToMany(models.Ingredient, {through: models.UserIngredient})
   };
   return User;
 };
