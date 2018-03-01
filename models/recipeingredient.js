@@ -9,5 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     RecipeIngredient.belongsTo(models.Recipe);
     RecipeIngredient.belongsTo(models.Ingredient);
   };
+  
   return RecipeIngredient;
 };

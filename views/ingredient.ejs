@@ -37,7 +37,11 @@
                 <% for(let i=0; i<userIngredients.length; i++){ %>
                     <tr>
                         <td><%= userIngredients[i].Ingredient.name %></td>
-                        <td><button>Delete</button></td>
+                        <td>
+                            <form method="POST" action="/ingredient/delete/<%= userIngredients[i].Ingredient.id%>" style="margin: 0">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
                     </tr>
                 <% } %>
             </tbody>

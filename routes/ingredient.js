@@ -17,7 +17,6 @@ routes.get('/', (req,res)=>{
             where: {UserId: req.session.userIdLogin},
             include: [{model: models.Ingredient}]
         }).then(userIngredients => {
-            // res.send({ingredients: ingredients, userId: req.session.userIdLogin, userIngredients: userIngredients})
             res.render('ingredient.ejs', {ingredients: ingredients, isLogin:req.session.isLogin, userId: req.session.userIdLogin, userIngredients: userIngredients})
         })
         // 
@@ -32,6 +31,18 @@ routes.post('/:idUser/add/:idIngredient', (req,res)=>{
     })
         .then(()=>{
             res.redirect('/ingredient');
+        })
+});
+
+routes.post('/delete/:idIngredient', (req,res) => {
+    models.UserIngredient.findOne({
+        where: {UserId: req.session.userIdLogin, IngredientId: req.params.idIngredient}
+    })
+        .then((userIngredient)=>{
+            userIngredient.destroy()
+                .then(()=>{
+                    res.redirect('/ingredient')
+                })
         })
 });
 

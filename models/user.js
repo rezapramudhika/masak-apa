@@ -52,8 +52,6 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeDestroy: (instance, options) => {
         let userId = instance.id;
-        console.log('=============>',instance)
-        console.log('----------------<', options)
         sequelize.models.UserIngredient.destroy({where: {UserId:userId}})
         .then(() => {})
         .catch(err => {console.log(err)})
