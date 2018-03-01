@@ -9,20 +9,24 @@
         <form>
             
         </form>
-
+        <% let count = [];%>
         <% for(let i = 0; i<recipe.length; i++){ %>
-            <ul style="background: lightblue"> 
-                <p style="font-weight: 600; margin: 0"><%= recipe[i].name %></p>
-                Ingredient:
-                <br>
-                <% for(let j = 0; j<recipe[i].Ingredients.length; j++){ %>
-                    <li> <%= recipe[i].Ingredients[j].name %> </li>
-                <% } %>
-                <h4>Instructions</h4>
-                <h5><% helper.instructionsAdjuster(recipe[i].instruction).forEach(instruction => {%>
-                    <li><%=instruction%></li>
-                <%})%></h5>
-            </ul> 
+           <% if(!count.includes(recipe[i].RecipeId)){ %>
+                <ul style="background: lightblue"> 
+                        <p style="font-weight: 600; margin: 0"><%= recipe[i].Recipe.name %></p>
+                        Ingredient:
+                        <br>
+                        
+                        <% for(let j = 0; j<recipe[i].Recipe.Ingredients.length; j++){ %>
+                            <li> <%= recipe[i].Recipe.Ingredients[j].name %> </li>
+                        <% } %>
+                        <h4>Instructions</h4>
+                        <h5><% helper.instructionsAdjuster(recipe[i].Recipe.instruction).forEach(instruction => {%>
+                            <li><%=instruction%></li>
+                        <%})%></h5>
+                    </ul> 
+                <% count.push(recipe[i].RecipeId) %>
+            <% } %>
         <% } %>
             
     </body>

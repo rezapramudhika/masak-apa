@@ -16,16 +16,20 @@ routes.get('/', (req,res)=>{
                         ingredientIdArr.push(data[i].IngredientId);
                     }
                     models.RecipeIngredient.findAll({
-                        include: [{model: models.Ingredient}, {model: models.Recipe}],
+                        include: [{
+                            model: models.Recipe,
+                            include: models.Ingredient
+                        }],
                         where: {
                             IngredientId: {
                                 [Op.in]: ingredientIdArr
                             }
-                        }
+                        },
+                        // group: [RecipeId]
                     })
                         .then(recipes => {
-                            // res.render('recipe.ejs', {recipe: recipes, isLogin:req.session.isLogin});
-                            res.send({recipes: recipes, data: data})
+                            res.render('recipe.ejs', {recipe: recipes, isLogin:req.session.isLogin});
+                            // res.send({recipes: recipes, data: data})
                         })
                     // res.send(data);
                 })
