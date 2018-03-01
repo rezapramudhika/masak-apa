@@ -1,7 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    name: {
+    firstName: {
+      type:DataTypes.STRING,
+      validate: {
+        // notNull: {
+        //   args: true,
+        //   msg: "Name cannot be empty"
+        // },
+        isAlphanumeric: {
+          args: true,
+          msg: "You cannot use special character for Name"
+        }
+      }
+    },
+    lastName: {
       type:DataTypes.STRING,
       validate: {
         // notNull: {
@@ -64,5 +77,9 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Ingredient, {through: models.UserIngredient});
     User.hasMany(models.UserIngredient);
   };
+
+  User.prototype.fullName = function () {
+    return `${this.firstName} ${this.lastName}`
+  }
   return User;
 };

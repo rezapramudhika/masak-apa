@@ -36,21 +36,26 @@ routes.post('/login', (req, res) => {
 
 routes.get('/register', helper.redirectIfLoggedIn, (req, res) => {
     let err = req.query.err || '';
-    let name = req.query.name || '';
-    let email = req.query.email || '';    
-    res.render('register', {err:err, name:name, email:email, isLogin:req.session.isLogin})
+    let newUser = {
+        firstName:req.query.firstName || '',
+        lastName:req.query.lastName || '',
+        email:req.query.email || '',
+    }
+    res.render('register', {err:err, data:newUser, isLogin:req.session.isLogin})
 });
 
 routes.post('/register', (req, res) => {
+    console.log(req.body)
     let newAcc = {
-        name: req.body.name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
     };
     model.User.create(newAcc)
     .then(() => res.redirect('/'))
     .catch((err) => {
-        res.redirect(`/register?err=${err}&name=${newAcc.name}`)
+        res.redirect(`/register?err=${err}&firstName=${newAcc.firstName}&lastName=${newAcc.lastName}`)
     })
 });
 
