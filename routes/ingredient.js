@@ -8,19 +8,24 @@ const Op = Sequelize.Op;
 routes.get('/', helper.isLogin, (req,res)=>{
     let keyword = req.query.keyword;
     let userId = req.session.userIdLogin;
-    models.Ingredient.findAll({
-        where: {
-            name: {
-                [Op.iLike]: '%'+req.query.keyword+'%'}
-        }
-    }).then(ingredients => {
-        models.UserIngredient.findAll({
-            where: {UserId: req.session.userIdLogin},
-            include: [{model: models.Ingredient}]
-        }).then(userIngredients => {
-            res.render('ingredient.ejs', {ingredients: ingredients, isLogin:req.session.isLogin, userId: req.session.userIdLogin, userIngredients: userIngredients})
+    models.UserIngredient.findAll({
+        where: {UserId: req.session.userIdLogin},
+        include: [{model: models.Ingredient}]
+    })
+    .then(userIngredients => {
+        let listedIngredients = [];
+        userIngredients.forEach((ingredient) => {
+            listedIngredients.push(ingredient.IngredientId);
+        });
+        models.Ingredient.findAll({
+            where: {
+                id: {[Op.notIn]: listedIngredients},
+                name: {[Op.iLike]: '%'+req.query.keyword+'%'}
+            }
         })
-        // 
+        .then((unListedIngredients) => {
+            res.render('ingredient.ejs', {ingredients: unListedIngredients, isLogin:req.session.isLogin, userId: req.session.userIdLogin, userIngredients: userIngredients})
+        })
     })
     
 });
