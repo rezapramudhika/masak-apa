@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "ervan",
-    "password": "ervan",
-=======
     "username": "reza",
     "password": "postgres",
->>>>>>> user-add-ingredient
     "database": "masakapa",
     "host": "127.0.0.1",
     "dialect": "postgres"
