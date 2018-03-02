@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
     "username": "ervan",
     "password": "ervan",
-=======
-    "username": "reza",
-    "password": "postgres",
->>>>>>> user-add-ingredient
     "database": "masakapa",
     "host": "127.0.0.1",
     "dialect": "postgres"
@@ -19,10 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "DATABASE_URL",
+    "webhost":"https://stark-tundra-86711.herokuapp.com/"
   }
 }
