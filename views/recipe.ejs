@@ -13,10 +13,10 @@
         <% for(let i = 0; i<recipe.length; i++){ %>
            <% if(!count.includes(recipe[i].RecipeId)){ %>
                 <ul style="background: lightblue"> 
+                        <blockquote class="imgur-embed-pub" lang="en" data-id="<%= recipe[i].Recipe.image %>"><a href="//imgur.com/<%= recipe[i].Recipe.image %>">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
                         <p style="font-weight: 600; margin: 0"><%= recipe[i].Recipe.name %></p>
                         Ingredient:
                         <br>
-                        
                         <% for(let j = 0; j<recipe[i].Recipe.Ingredients.length; j++){ %>
                             <li> <%= recipe[i].Recipe.Ingredients[j].name %> </li>
                         <% } %>

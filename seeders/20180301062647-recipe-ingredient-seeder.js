@@ -13,32 +13,32 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('RecipeIngredients', [{
-      RecipeId: 2,
+      RecipeId: 1,
       IngredientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      RecipeId: 2,
+      RecipeId: 1,
       IngredientId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      RecipeId: 2,
+      RecipeId: 1,
       IngredientId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      RecipeId: 3,
+      RecipeId: 2,
       IngredientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      RecipeId: 3,
+      RecipeId: 2,
       IngredientId: 4,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      RecipeId: 3,
+      RecipeId: 2,
       IngredientId: 5,
       createdAt: new Date(),
       updatedAt: new Date()

@@ -5,10 +5,6 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 routes.get('/', (req,res)=>{
-    // models.Recipe.findAll({
-    //     include: [{model: models.Ingredient}]
-    // })
-    //     .then(recipes => {
         let ingredientIdArr = [];
             models.UserIngredient.getIngredientId(req.session.userIdLogin)
                 .then(data => {
@@ -25,19 +21,11 @@ routes.get('/', (req,res)=>{
                                 [Op.in]: ingredientIdArr
                             }
                         },
-                        // group: [RecipeId]
                     })
                         .then(recipes => {
                             res.render('recipe.ejs', {recipe: recipes, isLogin:req.session.isLogin});
-                            // res.send({recipes: recipes, data: data})
                         })
-                    // res.send(data);
                 })
-            
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
 });
 
 module.exports = routes;
